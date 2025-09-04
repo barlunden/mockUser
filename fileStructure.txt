@@ -1,0 +1,23 @@
+mockUser/
+├── backend/
+│   ├── package.json
+│   ├── server.js
+│   ├── mockUsers.js
+│   ├── messages.js
+│   └── middleware/
+│       └── auth.js
+├── frontend/
+│   ├── package.json
+│   ├── src/
+│   │   ├── App.jsx
+│   │   ├── index.js
+│   │   ├── pages/
+│   │   │   ├── LoginPage.jsx
+│   │   │   └── MessagesBoard.jsx
+│   │   ├── components/
+│   │   │   ├── MessageForm.jsx
+│   │   │   └── MessageList.jsx
+│   │   └── utils/
+│   │       └── api.js
+│   └── public/
+│       └── index.html
