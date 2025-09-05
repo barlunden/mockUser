@@ -1,8 +1,16 @@
 // backend/mockUsers.js
 
 const mockUsers = [
-  { email: "alice@example.com", password: "password1" },
-  { email: "bob@example.com", password: "password2" },
+  {
+    fullName: "Willy Wonka",
+    email: "ww@example.com",
+    password: "chocolate",
+  },
+  {
+    fullName: "Alice Wonderland",
+    email: "alice@example.com",
+    password: "wonderland",
+  },
 ];
 
-export default mockUsers;
+module.exports = mockUsers;

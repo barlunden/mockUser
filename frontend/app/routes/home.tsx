@@ -2,6 +2,7 @@ import { Button } from "~/components/ui/button";
 import type { Route } from "./+types/home";
 import { useAuth } from "~/lib/AuthContext";
 import { useOutletContext } from "react-router";
+import LoginStatusMarker from "~/components/LoginStatusMarker";
 
 // Define the context type for useOutletContext
 type OutletContextType = {
@@ -81,76 +82,63 @@ export default function Home() {
 
           <h4>Your friendly mockup-hosts are:</h4>
           {/* Static table with example users */}
-          <table className="min-w-full divide-y divide-gray-200 border border-gray-300 rounded-lg shadow">
-            <thead className="bg-gray-100">
-              <tr>
-                <th className="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
-                  Name
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
-                  Email
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
-                  Password
-                </th>
-              </tr>
-            </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {/* Example user rows */}
-              <tr>
-                <td className="px-6 py-4 whitespace-nowrap text-gray-800">
-                  Willy Wonka
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-gray-800">
-                  ww@example.com
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-gray-800">
-                  chocolate
-                </td>
-              </tr>
-              <tr>
-                <td className="px-6 py-4 whitespace-nowrap text-gray-800">
-                  Alice Wonderland
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-gray-800">
-                  alice@example.com
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-gray-800">
-                  wonderland
-                </td>
-              </tr>
-            </tbody>
-            <tfoot className="bg-gray-50">
-              <tr>
-                <td className="px-6 py-3 text-gray-600 text-sm" colSpan={3}>
-                  {/* Note about example users */}
-                  Note: The users above will happily lend you their login
-                  credentials. However, you may also create your own unique
-                  user.
-                </td>
-              </tr>
-            </tfoot>
-          </table>
+          <div className="w-full overflow-x-auto">
+            <table className="min-w-full divide-y divide-gray-200 border border-gray-300 rounded-lg shadow">
+              <thead className="bg-gray-100">
+                <tr>
+                  <th className="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
+                    Name
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
+                    Email
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">
+                    Password
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                {/* Example user rows */}
+                <tr>
+                  <td className="px-6 py-4 whitespace-nowrap text-gray-800">
+                    Willy Wonka
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-gray-800">
+                    ww@example.com
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-gray-800">
+                    chocolate
+                  </td>
+                </tr>
+                <tr>
+                  <td className="px-6 py-4 whitespace-nowrap text-gray-800">
+                    Alice Wonderland
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-gray-800">
+                    alice@example.com
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-gray-800">
+                    wonderland
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot className="bg-gray-50">
+                <tr>
+                  <td className="px-6 py-3 text-gray-600 text-sm" colSpan={3}>
+                    {/* Note about example users */}
+                    Note: The users above will happily lend you their login
+                    credentials. However, you may also create your own unique
+                    user.
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
         </section>
       </div>
 
       {/* Login status marker */}
-      <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-white/80 px-4 py-2 rounded-full shadow-lg border border-gray-200">
-        <span
-          className={`w-7 h-7 rounded-full flex items-center justify-center text-white text-base font-bold ${
-            isLoggedIn ? "bg-green-500" : "bg-red-400"
-          }`}
-          title={isLoggedIn ? "Logged in" : "Not logged in"}
-        >
-          {isLoggedIn ? "✓" : "!"}
-        </span>
-        <span className="text-gray-800 font-semibold text-sm">
-          Login Status:{" "}
-          <span className={isLoggedIn ? "text-green-600" : "text-red-600"}>
-            {isLoggedIn ? "Logged in" : "Not logged in"}
-          </span>
-        </span>
-      </div>
+      <LoginStatusMarker />
     </>
   );
 }

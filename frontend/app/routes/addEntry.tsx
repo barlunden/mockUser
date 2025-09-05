@@ -6,6 +6,7 @@ import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
 import { Textarea } from "~/components/ui/textarea";
 import { useAuth } from "../lib/AuthContext";
+import LoginStatusMarker from "~/components/LoginStatusMarker";
 
 // Main component for adding a new entry/post
 export default function AddEntry() {
@@ -110,8 +111,34 @@ export default function AddEntry() {
   // Render the form UI
   return (
     <>
-      <title>Add comment</title>
-      <section className="container bg-gradient-to-br from-amber-100 to-amber-300 rounded-2xl border-1 border-amber-500">
+      {/* Hero-liknande toppseksjon */}
+      <section className="relative bg-gradient-to-br from-amber-200 via-amber-100 to-white py-12 mb-10 rounded-b-3xl">
+        <div className="container mx-auto flex flex-col items-center justify-center text-center gap-4">
+          <h1 className="text-4xl font-extrabold text-amber-700 drop-shadow">
+            Add a New Entry
+          </h1>
+          <p className="text-lg text-slate-700 max-w-xl mx-auto">
+            Share your thoughts with the world! Fill out the form below to post a
+            new entry.
+          </p>
+        </div>
+        {/* Dekorativ bølge i botn */}
+        <svg
+          className="absolute bottom-0 left-0 w-full"
+          viewBox="0 0 1440 80"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style={{ pointerEvents: "none" }}
+        >
+          <path
+            fill="#fff"
+            d="M0,32 C360,80 1080,0 1440,48 L1440,80 L0,80 Z"
+          />
+        </svg>
+      </section>
+
+      {/* Resten av addEntry-innhaldet, t.d. skjema */}
+      <div className="container mx-auto max-w-xl">
         {/* Vis skjema berre om innlogga */}
         {isLoggedIn ? (
           <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
@@ -146,11 +173,29 @@ export default function AddEntry() {
             {success && <p className="text-green-500">{success}</p>}
           </form>
         ) : (
-          <p className="text-red-500">
-            You must be logged in to post an entry.
-          </p>
+          <div className="max-w-xl mx-auto my-8">
+            <div className="flex items-center gap-3 bg-amber-100 border-l-4 border-amber-400 rounded-xl px-6 py-4 shadow-sm">
+              <svg
+                className="w-7 h-7 text-amber-400"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M13 16h-1v-4h-1m1-4h.01M12 20a8 8 0 100-16 8 8 0 000 16z"
+                />
+              </svg>
+              <span className="text-amber-800 font-semibold text-lg">
+                You must be logged in to post an entry.
+              </span>
+            </div>
+          </div>
         )}
-      </section>
+      </div>
+      <LoginStatusMarker />
     </>
   );
 }
